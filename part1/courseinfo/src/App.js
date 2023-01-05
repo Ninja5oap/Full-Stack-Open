@@ -1,5 +1,7 @@
 const Header = (props) => {
-  return <h1>{props.courseName}</h1>
+  return (
+    <h1>{props.courseName}</h1>
+  )
 }
 
 const Content = (props) => {
@@ -13,7 +15,6 @@ const Content = (props) => {
 }
 
 const Part = (props) => {
-  console.log(props)
   return (
     <p>{props.part.name} {props.part.exercises}</p>
   )
