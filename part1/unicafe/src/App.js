@@ -1,12 +1,18 @@
 import { useState } from 'react'
 
+const Header = (props) => (
+  <h1>
+    {props.text}
+  </h1>
+)
+
 const Button = (props) => (
   <button onClick={props.handleClick}>
     {props.text}
   </button>
 )
 
-const Display = (props) => (
+const Statistics = (props) => (
   <div>
     {props.text} {props.value}
   </div>
@@ -23,17 +29,17 @@ const App = () => {
 
   return (
     <>
-      <h1>give feedback</h1>
+      <Header text = "give feedback" />
       <Button handleClick={() => setGood(good + 1)} text="good"/>
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral"/>
       <Button handleClick={() => setBad(bad + 1)} text="bad"/>
-      <h1>statistics</h1>
-      <Display text="good" value = {good}/>
-      <Display text="neutral" value = {neutral}/>
-      <Display text="bad" value = {bad}/>
-      <Display text="all" value = {sum}/>
-      <Display text="average" value = {isNaN(avg) ? "" : avg}/>
-      <Display text="positive" value = {isNaN(positive) ? "" : positive * 100 +'%'}/>
+      <Header text = "statistics" />
+      <Statistics text = "good" value = {good}/>
+      <Statistics text = "neutral" value = {neutral}/>
+      <Statistics text = "bad" value = {bad}/>
+      <Statistics text = "all" value = {sum}/>
+      <Statistics text = "average" value = {isNaN(avg) ? "" : avg}/>
+      <Statistics text = "positive" value = {isNaN(positive) ? "" : positive * 100 +'%'}/>
     </>
   )
 }
