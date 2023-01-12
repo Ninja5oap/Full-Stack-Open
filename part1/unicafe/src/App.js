@@ -12,7 +12,30 @@ const Button = (props) => (
   </button>
 )
 
-const Statistics = (props) => (
+const Statistics = (props) => {
+  if (props.good == 0 && props.neutral == 0 && props.bad == 0){
+    return (
+      <>
+      No feedback given
+      </>
+    )
+  }
+
+  else{
+    return (
+      <>
+        <StatisticsLine text = "good" value = {props.good}/>
+        <StatisticsLine text = "neutral" value = {props.neutral}/>
+        <StatisticsLine text = "bad" value = {props.bad}/>
+        <StatisticsLine text = "all" value = {props.all}/>
+        <StatisticsLine text = "average" value = {props.average}/>
+        <StatisticsLine text = "positive" value = {props.positive}/>
+      </>
+    )
+  }
+}
+
+const StatisticsLine = (props) => (
   <div>
     {props.text} {props.value}
   </div>
@@ -23,9 +46,9 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  const sum = good + neutral + bad
-  const avg = (good - bad) / sum
-  const positive = good / sum
+  const all = good + neutral + bad
+  const average = (good - bad) / all
+  const positive = good / all * 100 + '%'
 
   return (
     <>
@@ -34,12 +57,7 @@ const App = () => {
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral"/>
       <Button handleClick={() => setBad(bad + 1)} text="bad"/>
       <Header text = "statistics" />
-      <Statistics text = "good" value = {good}/>
-      <Statistics text = "neutral" value = {neutral}/>
-      <Statistics text = "bad" value = {bad}/>
-      <Statistics text = "all" value = {sum}/>
-      <Statistics text = "average" value = {isNaN(avg) ? "" : avg}/>
-      <Statistics text = "positive" value = {isNaN(positive) ? "" : positive * 100 +'%'}/>
+      <Statistics good = {good} neutral = {neutral} bad = {bad} all = {all} average = {average} positive = {positive}/>
     </>
   )
 }
