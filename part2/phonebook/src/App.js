@@ -14,13 +14,13 @@ const App = () => {
     }
     
     else {
-      const noteObject = {
+      const person = {
         name: newName,
         number: newNumber,
         id: persons.length + 1
       }
 
-      setPersons(persons.concat(noteObject))
+      setPersons(persons.concat(person))
       setNewName('')
       setNewNumber('')
     }
